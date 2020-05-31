@@ -1,50 +1,24 @@
 package com.enjoylearning.mybatis;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Constructor;
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import javax.jws.soap.SOAPBinding.Use;
-
+import com.enjoylearning.mybatis.entity.EmailSexBean;
+import com.enjoylearning.mybatis.entity.TPosition;
+import com.enjoylearning.mybatis.entity.TUser;
+import com.enjoylearning.mybatis.mapper.TUserMapper;
+import com.enjoylearning.mybatis.mapper.TUserTestMapper;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.reflection.DefaultReflectorFactory;
-import org.apache.ibatis.reflection.MetaObject;
-import org.apache.ibatis.reflection.Reflector;
-import org.apache.ibatis.reflection.ReflectorFactory;
-import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
-import org.apache.ibatis.reflection.factory.ObjectFactory;
-import org.apache.ibatis.reflection.property.PropertyTokenizer;
-import org.apache.ibatis.reflection.wrapper.BeanWrapper;
-import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
-import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
-import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.test.annotation.Commit;
-import org.springframework.test.annotation.Rollback;
 
-import com.enjoylearning.mybatis.entity.EmailSexBean;
-import com.enjoylearning.mybatis.entity.THealthReportFemale;
-import com.enjoylearning.mybatis.entity.TJobHistory;
-import com.enjoylearning.mybatis.entity.TPosition;
-import com.enjoylearning.mybatis.entity.TUser;
-import com.enjoylearning.mybatis.mapper.THealthReportFemaleMapper;
-import com.enjoylearning.mybatis.mapper.TJobHistoryAnnoMapper;
-import com.enjoylearning.mybatis.mapper.TUserMapper;
-import com.enjoylearning.mybatis.mapper.TUserTestMapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MybatisDemo {
 	
