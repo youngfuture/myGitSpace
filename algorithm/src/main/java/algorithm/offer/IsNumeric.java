@@ -1,106 +1,92 @@
 package algorithm.offer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。
  * 例如，字符串"+100","5e2","-123","3.1416"和"-1E-16"都表示数值。
  * 但是"12e","1a3.14","1.2.3","+-5"和"12e+4.3"都不是。
+ * <p>
+ * <p>
+ * <p>
+ * https://blog.csdn.net/qq_27984879/article/details/86232076
+ * <p>
  */
 public class IsNumeric {
-    public static void main(String[] args) {
-        String str = "+100";
-        System.out.println(new IsNumeric().isNumeric(str.toCharArray()));
+
+    int index = 0;
+
+    public boolean isNumeric2(char[] str) {
+        String s = String.valueOf(str);
+        return s.matches("[+-]?[0-9]*(\\.[0-9]*)?([eE][+-]?[0-9]+)?");
     }
 
 
+    /**
+     * 代码简简洁，但是相比 isNumeric1 可读性要查一些
+     *
+     * @param str
+     * @return
+     */
     public boolean isNumeric(char[] str) {
-        Map<Character, Character> charMap = new HashMap();
-        Map<Character, Character> charMap2 = new HashMap();
-        charMap.put('1', '1');
-        charMap.put('2', '2');
-        charMap.put('3', '3');
-        charMap.put('4', '4');
-        charMap.put('5', '5');
-        charMap.put('6', '6');
-        charMap.put('7', '7');
-        charMap.put('8', '8');
-        charMap.put('9', '9');
-        charMap.put('0', '0');
-
-        charMap2.put('1', '1');
-        charMap2.put('2', '2');
-        charMap2.put('3', '3');
-        charMap2.put('4', '4');
-        charMap2.put('5', '5');
-        charMap2.put('6', '6');
-        charMap2.put('7', '7');
-        charMap2.put('8', '8');
-        charMap2.put('9', '9');
-        charMap2.put('0', '0');
-
-        charMap.put('+', '+');
-        charMap.put('-', '-');
-        charMap.put('.', '.');
-        charMap.put('e', 'e');
-        charMap.put('E', 'E');
+        // +-标记符号、小数点、e是否出现过
+        boolean sign = false, decimal = false, hasE = false;
         for (int i = 0; i < str.length; i++) {
-            if (charMap.get(str[i]) == null) {
-                return false;
-            }
-            if ((str[i] == '+' || str[i] == '-') && i == 0) {
-                continue;
-            } else {
-                return false;
-            }
-
-            if (str[i] == '.') {
-                if(i==str.length-1){
-                    return false;
-                }
-                if( charMap2.get(str[i - 1]) == null){
-                    return  false;
-                }
-
-
-                if(charMap2.get(str[i+ 1]) == null){
-                    return false
-                }
-
-            }
-
-
             if (str[i] == 'e' || str[i] == 'E') {
-                if (charMap2.get(str[i - 1]) == null) {
-                    return false;
-                }else {
-                    for (int j = i + 1; j < str.length; j++) {
-                        if (j == i + 1) {
-                            if (str[j] == '+' || str[j] == '-') {
-                                if (charMap2.get(str[j + 1]) != null && j + 1 < str.length) {
-                                    continue;
-                                } else {
-                                    return false;
-                                }
-                            }
-                        }
-                        if (charMap2.get(str[j]) != null) {
-                            continue;
-                        } else {
-                            return false;
-                        }
-                    }
-                }
-            }
+                if (i == str.length - 1) return false; // e后面一定要接数字
+                if (hasE) return false;  // 不能同时存在两个e
+                hasE = true;
+            } else if (str[i] == '+' || str[i] == '-') {
+                // 第二次出现+-符号，则必须紧接在e之后
+                if (sign && str[i - 1] != 'e' && str[i - 1] != 'E') return false;
+                // 第一次出现+-符号，且不是在字符串开头，则也必须紧接在e之后
+                if (!sign && i > 0 && str[i - 1] != 'e' && str[i - 1] != 'E') return false;
+                sign = true;
+            } else if (str[i] == '.') {
+                // e后面不能接小数点，小数点不能出现两次
+                if (hasE || decimal) return false;
+                decimal = true;
+            } else if (str[i] < '0' || str[i] > '9') // 不合法字符
+                return false;
+        }
+        return true;
+    }
 
+
+    public boolean isNumeric1(char[] str) {
+        if (str.length < 1)
+            return false;
+
+        boolean flag = scanInteger(str);
+
+        // . 后面是无符号整数
+        if (index < str.length && str[index] == '.') {
+            index++;
+            flag = scanUnsignedInteger(str) || flag;
         }
 
+        // E、e 后面是整数
+        if (index < str.length && (str[index] == 'E' || str[index] == 'e')) {
+            index++;
+            flag = flag && scanInteger(str);
+        }
+
+        return flag && index == str.length;
 
     }
 
+    private boolean scanInteger(char[] str) {
+        // 遇到 +- 符号index向前移动一位
+        if (index < str.length && (str[index] == '+' || str[index] == '-'))
+            index++;
+        return scanUnsignedInteger(str);
 
-        return true;
+    }
 
-}
+    private boolean scanUnsignedInteger(char[] str) {
+        int start = index;
+        while (index < str.length && str[index] >= '0' && str[index] <= '9')
+            index++;
+
+        //从index开始扫描，如果是0-9就继续，扫描退出的时候判断从index开始到退出是否存在一个整数就可以
+        return start < index; //是否存在整数
+    }
 }
