@@ -1,9 +1,9 @@
-package algorithm.geekTime;
+package algorithm.geekTime.class_15_16;
 
-public class BinarySearch_1 {
+public class BinarySearch {
     public static void main(String[] args) {
         int[] a = {8, 11, 19, 23, 27, 33, 45, 55, 67, 98};
-        System.out.println(a[new BinarySearch_1().bsearch(a, a.length, 33)]);
+        System.out.println(a[new BinarySearch().bsearch(a, a.length, 33)]);
     }
 
 
