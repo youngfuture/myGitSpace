@@ -1,16 +1,6 @@
 package algorithm.geekTime;
 
-
-/**
- * @author: zhiqiang.xu
- * @date: 2020/8/10
- * @description:
- * @edit:
- * @date:
- * @description:
- */
 public class BinarySearch_1 {
-
     public static void main(String[] args) {
         int[] a = {8, 11, 19, 23, 27, 33, 45, 55, 67, 98};
         System.out.println(a[new BinarySearch_1().bsearch(a, a.length, 33)]);
