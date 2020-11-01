@@ -35,6 +35,8 @@ public class TestJol {
 
         log.debug(ClassLayout.parseInstance(a).toPrintable());
 
+        Thread.interrupted();
+
     }
 
 
