@@ -1,6 +1,8 @@
 package main.java.algorithm.String;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -79,4 +81,48 @@ public class LengthOfLongestSubstring {
         return maxLength;
 
     }
+
+    //滑动窗口
+    public int lengthOfLongestSubstring4(String s) {
+
+        if (s.length() == 0) {
+            return 0;
+        }
+
+        // key：字符 ；value：起始位置
+        Map<Character, Integer> map = new HashMap<>();
+
+        int startWin = 0;
+        int maxSubLength = 0;
+        int currentMaxLength = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (!map.containsKey(s.charAt(i))) {
+                map.put(s.charAt(i), i);
+                currentMaxLength++;
+            } else {
+                if (currentMaxLength > maxSubLength) {
+                    maxSubLength = currentMaxLength;
+                }
+
+                // 重复字符第一次出现的位置和窗口开始位置的最大值
+                startWin = Math.max(map.get(s.charAt(i)), startWin);
+                currentMaxLength = i - startWin;
+                map.put(s.charAt(i), i);
+            }
+        }
+
+        if (currentMaxLength > maxSubLength) {
+            maxSubLength = currentMaxLength;
+            return currentMaxLength;
+        }
+
+        return maxSubLength;
+    }
+
+    public static void main(String[] args) {
+       String s = "abcabcbb";
+        System.out.println(new LengthOfLongestSubstring().lengthOfLongestSubstring4(s));
+    }
+
 }
