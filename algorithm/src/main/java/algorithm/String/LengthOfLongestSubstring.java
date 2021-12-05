@@ -1,4 +1,4 @@
-package main.java.algorithm.String;
+package algorithm.String;
 
 import java.util.HashMap;
 import java.util.HashSet;

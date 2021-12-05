@@ -1,4 +1,4 @@
-package main.java.algorithm.leetcode.top100;
+package algorithm.leetcode.top100;
 
 /**
  * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/

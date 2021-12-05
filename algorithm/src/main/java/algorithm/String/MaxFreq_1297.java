@@ -1,4 +1,4 @@
-package main.java.algorithm.String;
+package algorithm.String;
 
 import org.omg.PortableInterceptor.INACTIVE;
 

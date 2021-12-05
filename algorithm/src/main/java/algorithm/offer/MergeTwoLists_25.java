@@ -1,4 +1,5 @@
-package main.java.algorithm.offer;
+package algorithm.offer;
+
 
 //剑指 Offer 25. 合并两个排序的链表
 public class MergeTwoLists_25 {

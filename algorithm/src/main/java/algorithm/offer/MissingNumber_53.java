@@ -1,4 +1,4 @@
-package main.java.algorithm.offer;
+package algorithm.offer;
 
 public class MissingNumber_53 {
 

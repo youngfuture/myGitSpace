@@ -1,4 +1,4 @@
-package main.java.algorithm.dynamic.programming;
+package algorithm.dynamic.programming;
 
 /**
  * https://leetcode-cn.com/problems/unique-paths/

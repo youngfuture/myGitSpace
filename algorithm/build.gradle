@@ -17,7 +17,8 @@ dependencies {
 /**
  * create dir： src、resource
  */
+/*
 task createJavaProject << {
     sourceSets*.java.srcDirs*.each{ it.mkdirs() }
     sourceSets*.resources.srcDirs*.each{ it.mkdirs()}
-}
+}*/

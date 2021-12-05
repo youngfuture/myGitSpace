@@ -1,4 +1,4 @@
-package main.java.algorithm.leedcode;
+package algorithm.leedcode;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package main.java.algorithm.leetcode.top100;
+package algorithm.leetcode.top100;
 
 import java.util.*;
 

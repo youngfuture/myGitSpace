@@ -1,4 +1,4 @@
-package main.java.algorithm.leetcode.top100;
+package algorithm.leetcode.top100;
 
 public class ListNode {
     int val;
