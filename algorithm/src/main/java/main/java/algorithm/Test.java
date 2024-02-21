@@ -18,6 +18,7 @@ public class Test {
             result += threeNum.charAt(i) * Math.pow(3, j);
             j++;
         }
+        System.out.println(result);
         return result;
     }
 }
