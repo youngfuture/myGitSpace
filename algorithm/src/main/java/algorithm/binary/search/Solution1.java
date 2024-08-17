@@ -27,7 +27,6 @@ public class Solution1 {
     }
 
 
-
     public int search2(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
@@ -75,5 +74,19 @@ public class Solution1 {
             result = recursion(nums, mid + 1, right, target);
         }
         return result;
+    }
+
+
+    public int search3(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
+        return r;
     }
 }
