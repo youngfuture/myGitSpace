@@ -87,9 +87,9 @@ public class UserTest {
 
     }
 
-    public static void main(String[] args) {
-        test1();
-    }
+//    public static void main(String[] args) {
+//        test1();
+//    }
 
     static void test1() {
         //构建Map<id,UserCourse>结构
@@ -176,10 +176,10 @@ public class UserTest {
 
 
     public static void main(String[] args) {
-        List<String> names = List.of("Alice", "Bob", "Alice", "Charlie");
-        List<String> distinctNames = names.stream().distinct().collect(Collectors.toList());
-        System.out.println(distinctNames); // 输出: [Alice, Bob, Charlie]
+//        List<String> names = List.of("Alice", "Bob", "Alice", "Charlie");
+//        List<String> distinctNames = names.stream().distinct().collect(Collectors.toList());
+//        System.out.println(distinctNames); // 输出: [Alice, Bob, Charlie]
     }
 
 
-    }
+}
