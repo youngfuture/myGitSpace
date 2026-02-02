@@ -5,11 +5,15 @@ import design.patterns.factory.abstractFactory.demo_2.IUserService;
 
 public class Demo3Test {
     public static void main(String[] args) throws Exception {
-        //用简单工厂改进抽象工厂
+        //简单工厂
 
+        //用户对象
         User user = new User();
 
-        IUserService userService = DataAccessFactory.createUserService();
+        //String dbName = "MySQL";
+        String dbName = "TiDB";
+
+        IUserService userService = DataAccessFactory.createUserService(dbName);
 
         userService.insert(user);
 

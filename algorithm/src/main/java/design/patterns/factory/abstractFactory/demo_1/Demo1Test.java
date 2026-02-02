@@ -4,14 +4,13 @@ import design.patterns.factory.abstractFactory.User;
 
 public class Demo1Test {
     public static void main(String[] args) {
-        //最简单的方法
-
+        //创建用户对象
         User user = new User();
 
-        MySQLUserService mySQLUserService = new MySQLUserService();
+        //MySQLUserService serService = new MySQLUserService();
+        TidbUserService serService = new TidbUserService();
 
-        mySQLUserService.insert(user);
-
-        mySQLUserService.get(1);
+        serService.insert(user);
+        serService.get(1);
     }
 }
